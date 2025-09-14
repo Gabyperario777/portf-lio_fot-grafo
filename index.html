@@ -1,118 +1,555 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Portfólio Fotógrafo</title>
+    <title>Fotógrafo de Casamento | Seu Nome</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        /* Variáveis de cores */
+        :root {
+            --primary: #20201e;
+            --secondary: #bd926d;
+            --light: #f8f8f8;
+            --white: #ffffff;
+            --gray: #f0f0f0;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
-            background-color: white;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--white);
+            color: var(--primary);
+            line-height: 1.6;
         }
 
-        p {
-            color: #20201e;
-            text-align: justify;
-            text-indent: 30px;
-            font-size: 20px;
-            margin-bottom: 80px;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        p2{
-            color: #20201e;
-            font-size: 70px;
+        section {
+            padding: 80px 0;
         }
 
-        p3{
-            color: rgb(189, 146, 109);
-            font-size: 30px;
-        }
-        
-        p4{
-            color: #20201e;
-            font-size: 50px;
+        /* Header/Navegação */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 15px 0;
         }
 
-        p5{
-            color: #20201e;
-            font-size: 30px;
-            justify-content: center;
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
-        .redes {
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 100%;
+            background-color: var(--primary);
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 0 80px;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.03"><circle cx="50" cy="50" r="40" stroke="%2320201e" fill="none" /></svg>');
+            background-size: 200px;
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .hero-text {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: var(--primary);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--gray);
+        }
+
+        .gallery-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .gallery-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            aspect-ratio: 3/4;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* About Section */
+        .about {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 40px;
+            border: 5px solid var(--secondary);
+            box-shadow: var(--shadow);
+        }
+
+        .about-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--gray);
+            text-align: center;
+        }
+
+        .contact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: var(--primary);
+        }
+
+        .social-links {
             display: flex;
             justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .social-link {
+            display: flex;
             align-items: center;
-            gap: 10px;
-          }
-          
-          .redes a {
-            text-decoration: none;
-          }
-          
-          .redes img {
+            justify-content: center;
             width: 70px;
             height: 70px;
-          }
+            background-color: var(--white);
+            color: var(--primary);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow);
+        }
 
+        .social-link:hover {
+            background-color: var(--secondary);
+            color: var(--white);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 20px 0;
+                gap: 15px;
+                box-shadow: var(--shadow);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-text {
+                font-size: 1.1rem;
+            }
+            
+            .about-title, .contact-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .about-title, .contact-title {
+                font-size: 2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-link {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
     </style>
 </head>
 <body>
-    <p>
-        Fotógrafo de Casamento
-    </p>
+    <!-- Header/Navegação -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">Fotógrafo</a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#gallery">Portfólio</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </div>
+    </header>
 
-    <center><p2> Fotografia de Casamento</p2></center>
-    <center><p3>Seu nome</p3></center>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <p class="hero-subtitle">Fotógrafo de Casamento</p>
+            <h1 class="hero-title">Fotografia de Casamento</h1>
+            <p class="hero-subtitle">Seu Nome</p>
+            <p class="hero-text">Capturando momentos especiais com sensibilidade e arte para eternizar o seu dia mais feliz.</p>
+        </div>
+    </section>
 
-    <table style="border-spacing: 30px; margin-bottom: 100px;">
-        <tr>
-            <td><img src="1.webp" alt="Image 1" height="300" width="300"></td>
-            <td><img src="2.webp" alt="Image 2" height="300" width="300"></td>
-            <td><img src="2vit8z.webp" alt="Image 3" height="300" width="300"></td>
-            <td><img src="casamento.webp" alt="Image 4" height="300" width="270"></td>/
-        </tr>
-        <tr>
-            <td><img src="5.webp" alt="Image 1" height="300" width="300"></td>
-            <td><img src="6.webp" alt="Image 2" height="300" width="300"></td>
-            <td><img src="7.webp" alt="Image 3" height="300" width="300"></td>
-            <td><img src="8..webp.webp" alt="Image 4" height="300" width="270"></td>/
-        </tr>
-        <tr>
-            <td><img src="9.webp" alt="Image 1" height="300" width="300"></td>
-            <td><img src="10.webp" alt="Image 2" height="300" width="300"></td>
-            <td><img src="11.webp" alt="Image 3" height="300" width="300"></td>
-            <td><img src="12.webp" alt="Image 4" height="300" width="270"></td>/
-        </tr>
-      </table>
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="gallery-title">Meu Portfólio</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="1.webp" alt="Casamento 1">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="2.webp" alt="Casamento 2">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="2vit8z.webp" alt="Casamento 3">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="casamento.webp" alt="Casamento 4">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="5.webp" alt="Casamento 5">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="6.webp" alt="Casamento 6">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="7.webp" alt="Casamento 7">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="8..webp.webp" alt="Casamento 8">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="9.webp" alt="Casamento 9">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="10.webp" alt="Casamento 10">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="11.webp" alt="Casamento 11">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="12.webp" alt="Casamento 12">
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <div style="text-align: center;">
-        <center><img src="imagem.JPG" height="200" width="200" margin-bottom: 100px;></center>
-        <p4>Sobre mim</p4>
-      </div>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <img src="imagem.JPG" alt="Sobre mim" class="about-image">
+            <h2 class="about-title">Sobre mim</h2>
+            <p class="about-text">
+                Aqui é onde o seu texto começa. Sou um fotógrafo especializado em capturar os momentos mais especiais do seu casamento. 
+                Com anos de experiência e um olhar único para detalhes, minha missão é transformar em memórias eternas cada sorriso, 
+                cada olhar e cada emoção do seu grande dia. Trabalho com paixão e dedicação para que você possa reviver a magia do 
+                seu casamento sempre que olhar para as fotografias.
+            </p>
+        </div>
+    </section>
 
-      <center><p style="margin-top: 50px;"><p5> Aqui é onde o seu texto começa</p5></p></center>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="contact-title">Contate-me</h2>
+            <p class="about-text">Vamos conversar sobre como posso eternizar o seu dia especial!</p>
+            
+            <div class="social-links">
+                <a href="https://api.whatsapp.com/send?phone=552100000000" target="_blank" class="social-link">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" class="social-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://facebook.com/" target="_blank" class="social-link">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+        </div>
+    </section>
 
-      <center><p4>Contate-me</p4></center>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-text">© 2023 Fotógrafo de Casamento - Todos os direitos reservados</p>
+        </div>
+    </footer>
 
-      <div class="redes">
-        <a href="https://api.whatsapp.com/send?phone=552100000000" target="_blank">
-          <img src="whatsapp.png" alt="WhatsApp" title="Quero falar com o atendimento">
-        </a>
-        <a href="https://www.instagram.com/" target="_blank">
-          <img src="instagram.png" alt="Instagram">
-        </a>
-        <a href="https://facebook.com/" target="_blank">
-          <img src="face.jpg" alt="Facebook">
-        </a>
-      </div>
-
-
-      
-
+    <script>
+        // Menu mobile toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Animação de elementos ao scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    fadeInObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(el => {
+            el.style.opacity = 0;
+            el.style.transition = 'opacity 0.8s ease';
+            fadeInObserver.observe(el);
+        });
+    </script>
 </body>
 </html>
